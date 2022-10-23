@@ -9,7 +9,7 @@ const passport = require('./config/passport')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 const { getUser } = require('./helpers/auth-helpers')
 
-const { pages } = require('./routes')
+const { pages, apis } = require('./routes')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -54,6 +54,7 @@ app.use((req, res, next) => {
 })
 
 //  middleware: routes
+app.use('/api', apis)
 app.use(pages)
 
 app.listen(port, () => {
