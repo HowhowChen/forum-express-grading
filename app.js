@@ -26,8 +26,9 @@ require('./models')
 app.engine('hbs', handlebars({ extname: '.hbs', helpers: handlebarsHelpers }))
 app.set('view engine', 'hbs')
 
-//  middleware: body-parser
+//  middleware: body-parser, json
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 //  middleware: method override
 app.use(methodOverride('_method'))
